@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  app:
+    image: php:8.2-apache
+    container_name: php_container
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8080:80
+    environment:
+      - ALLOW_OVERRIDE=true

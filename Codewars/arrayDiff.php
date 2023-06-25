@@ -1,6 +1,6 @@
 <?php
 
-// There is already a function called array_diif() doing it.
+// There is already a function called array_diff() doing it.
 
 function arrayDiff(array $array, array $subtract): array
 {

@@ -8,25 +8,13 @@ function sqInRect($lng, $wdth)
 
     do {
         if ($lng > $wdth) {
-            $number = (int)($lng / $wdth);
-            $rest = $lng % ($number * $wdth);
-
-            while ($number > 0) {
-                $result[] += $wdth;
-                $lng -= $wdth;
-                $number--;
-            }
+            $result[] += $wdth;
+            $lng -= $wdth;
         } else {
-            $number = (int)($wdth / $lng);
-            $rest = $wdth % ($lng * $number);
-
-            while ($number > 0) {
-                $result[] += $lng;
-                $wdth -= $lng;
-                $number--;
-            }
+            $result[] += $lng;
+            $wdth -= $lng;
         }
-    } while ($rest > 0);
+    } while ($wdth > 0 && $lng > 0);
 
 
     return $result;

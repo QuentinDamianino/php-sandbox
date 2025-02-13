@@ -17,15 +17,19 @@ function score($dice)
 
     foreach ($occurrencesMap as $value => $occurrences) {
         if ($occurrences < 3 && $value !== 1 && $value !== 5) continue;
-        if ($occurrences < 3 && $value === 1 || $value === 5) $result += ($occurrences * ($combosPointsTable[$value] / 10));
+        if ($occurrences < 3 && ($value === 1 || $value === 5)) $result += ($occurrences * ($combosPointsTable[$value] / 10));
         if ($occurrences === 3) $result += $combosPointsTable[$value];
         if ($occurrences === 6) $result += (2 * $combosPointsTable[$value]);
         if ($occurrences > 3 && $occurrences < 6 && ($value === 1 || $value === 5)) $result += ($combosPointsTable[$value] + (($occurrences - 3) * ($combosPointsTable[$value] / 10)));
+        if ($occurrences > 3 && $occurrences < 6 && ($value !== 1 && $value !== 5)) $result += $combosPointsTable[$value];
     }
 
     return $result;
 }
 
+var_dump(score([1, 1, 1, 1, 2]));
+var_dump(score([2, 2, 2, 2, 3]));
+var_dump(score([5, 5, 5, 3, 3]));
 var_dump(score([2, 3, 4, 6, 2]));
 var_dump(score([4, 4, 4, 3, 3]));
 var_dump(score([2, 4, 4, 5, 4]));
